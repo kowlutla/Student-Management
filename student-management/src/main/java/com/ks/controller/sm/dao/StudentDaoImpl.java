@@ -23,4 +23,16 @@ public class StudentDaoImpl implements StudentDao {
 		return students;
 	}
 
+	@Override
+	public boolean saveStudent(Student student) {
+		String sql = "INSERT INTO STUDENTS(name,mobile,country) VALUES(?,?,?)";
+		int update = jdbcTemplate.update(sql, student.getName(), student.getMobile(), student.getCountry());
+
+		if (update != 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }
