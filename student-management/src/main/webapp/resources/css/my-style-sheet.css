@@ -1,0 +1,65 @@
+@charset "ISO-8859-1";
+
+body {
+	background-image:
+		url('/student-management/URLToReachResourcesFolder/images/background.jpg');
+	text-align: center;
+	font-family: sans-serif;
+	font-size: 1.2rem;
+}
+
+h1 {
+	color: black;
+}
+
+.student_form {
+	align-items: center
+}
+
+table {
+	border: 3px solid black;
+}
+
+td {
+	padding: 15px;
+	margin: 10px;
+}
+
+.button {
+	background-color: #4f89b0;
+	border: none;
+	color: white;
+	padding: 15px 40px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 5%;
+	transition-duration: 0.5s;
+}
+
+.button:hover {
+	background-color: black;
+}
+
+
+
+.action {
+	padding: 14px 25px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	border-radius: 10%;
+}
+
+#delete{
+	background-color: #f44336;
+	color: white;
+}
+
+#update{
+	background-color: blue;
+	color: white;
+}
