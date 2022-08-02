@@ -6,24 +6,36 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css"
+	href="/student-management/URLToReachResourcesFolder/css/add-student.css">
+<link rel="stylesheet" type="text/css"
+	href="/student-management/URLToReachResourcesFolder/css/my-style-sheet.css">
 <title>Student Management</title>
 </head>
-<body bgcolor="Black" style="color: white">
-	<h1 align="center">Student Management</h1>
+<body>
+	<marquee width="60%" direction="left" height="100px" scrollamount="12"> 
+		<h1>Student Management</h1>
+	</marquee>
 
-	<div align="center">
+	<div>
 		<form:form action="saveStudent" modelAttribute="student" method="POST">
 
-			<form action="">
-				<label for="name">Name: </label>
-				<form:input path="name" name="name" placaholder="name" />
-				<br> <br> <label for="mobile">Mobile: </label>
-				<form:input path="mobile" name="mobile" placaholder="mobile" />
-				<br> <br> <label for="country">Country: </label>
-				<form:input path="country" name="country" placaholder="country" />
-				<br> <br> <input type="submit" value="Submit">
+			<form:hidden path="id" />
 
-			</form>
+			<label for="name">Name: </label>
+			<form:input path="name" name="name" placaholder="name" />
+			<br>
+			<br>
+			<label for="mobile">Mobile: </label>
+			<form:input path="mobile" name="mobile" placaholder="mobile" />
+			<br>
+			<br>
+			<label for="country">Country: </label>
+			<form:input path="country" name="country" placaholder="country" />
+			<br>
+			<br>
+			<input type="submit" value="Submit" class="button">
+
 		</form:form>
 	</div>
 </body>

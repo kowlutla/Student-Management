@@ -4,7 +4,7 @@ public class Student {
 
 	private int id;
 	private String name;
-	private long mobile;
+	private Long mobile;
 	private String country;
 
 	public Student() {
@@ -26,11 +26,11 @@ public class Student {
 		this.name = name;
 	}
 
-	public long getMobile() {
+	public Long getMobile() {
 		return mobile;
 	}
 
-	public void setMobile(long mobile) {
+	public void setMobile(Long mobile) {
 		this.mobile = mobile;
 	}
 

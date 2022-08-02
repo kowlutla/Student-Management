@@ -7,27 +7,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ks.controller.sm.api.Student;
-import com.ks.controller.sm.dao.StudentDao;
+import com.ks.controller.sm.service.StudentService;
 
 @Controller
 public class StudentController {
 
 	@Autowired
-	private StudentDao studentDao;
+	private StudentService studentService;
 
 	// @ResponseBody
 	@GetMapping("/students")
 	public String showStudentList(Model model) {
 
-		List<Student> students = studentDao.loadStudents();
+		List<Student> students = studentService.loadStudents();
 		model.addAttribute("students", students);
 
-		for (Student s : students) {
-			System.out.println(s);
-		}
 		return "student-list";
 	}
 
@@ -37,12 +35,29 @@ public class StudentController {
 		return "add-student";
 	}
 
-	@ResponseBody
 	@PostMapping("/saveStudent")
 	public String saveStudent(Student student) {
 
-		System.out.println(student);
-		studentDao.saveStudent(student);
-		return "Student Saved";
+		if (student.getId() == 0)
+			studentService.saveStudent(student);
+		else {
+			studentService.updateStudent(student);
+		}
+		return "redirect:/students";
+	}
+
+	@RequestMapping("/updateStudent")
+	public String updateStudent(Model model, @RequestParam("id") int id) {
+
+		Student student = studentService.getStudenById(id);
+		model.addAttribute("student", student);
+
+		return "add-student";
+	}
+
+	@RequestMapping("/deleteStudent")
+	public String delteStudent(@RequestParam("id") int id) {
+		studentService.deleteStudentById(id);
+		return "redirect:/students";
 	}
 }

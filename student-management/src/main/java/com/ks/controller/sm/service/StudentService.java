@@ -1,16 +1,16 @@
-package com.ks.controller.sm.dao;
+package com.ks.controller.sm.service;
 
 import java.util.List;
 
 import com.ks.controller.sm.api.Student;
 
-public interface StudentDao {
+public interface StudentService {
 
 	List<Student> loadStudents();
 
 	boolean saveStudent(Student student);
 
-	public Student getStudentById(int id);
+	public Student getStudenById(int id);
 
 	void updateStudent(Student student);
 

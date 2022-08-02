@@ -11,13 +11,15 @@ import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.ks")
 @PropertySource("classpath:database.properties")
-public class StudentAppConfig {
+public class StudentAppConfig implements WebMvcConfigurer {
 
 	@Autowired
 	private Environment env;
@@ -44,6 +46,12 @@ public class StudentAppConfig {
 		dataSource.setPassword(env.getProperty("spring.datasource.password"));
 		dataSource.setDriverClassName(env.getProperty("spring.datasource.driver-class-name"));
 		return dataSource;
+	}
+
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+
+		registry.addResourceHandler("/URLToReachResourcesFolder/**").addResourceLocations("/resources/");
 	}
 
 }
